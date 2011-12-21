@@ -9,7 +9,6 @@ import org.apache.wicket.markup.html.link.Link;
 import org.heapifyman.next.NextPage;
 
 /**
- * @author philip
  * 
  */
 public class HomePage extends WebPage {
