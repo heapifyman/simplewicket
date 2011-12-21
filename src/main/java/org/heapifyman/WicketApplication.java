@@ -1,7 +1,7 @@
 package org.heapifyman;
 
 import org.apache.wicket.protocol.http.WebApplication;
-import org.heapifyman.next.NextPage;
+import org.heapifyman.next.NotWorkingPage;
 
 /**
  * Application object for your web application. If you want to run this
@@ -28,6 +28,6 @@ public class WicketApplication extends WebApplication {
 
 		// mount pages to restful links
 		mountPage("/home", HomePage.class);
-		mountPage("/next", NextPage.class);
+		mountPage("/next", NotWorkingPage.class);
 	}
 }

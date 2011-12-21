@@ -22,16 +22,16 @@ import org.heapifyman.HomePage;
 /**
  * 
  */
-public class NextPage extends WebPage {
+public class NotWorkingPage extends WebPage {
 
 	private static final long serialVersionUID = 310242843705925911L;
 	
 	private static transient final Logger logger = Logger
-			.getLogger(NextPage.class);
+			.getLogger(NotWorkingPage.class);
 	
 	private static final String[] data = new String[15];
 	
-	public NextPage() {
+	public NotWorkingPage() {
 		
 		for (int i = 0; i < 15; i++) {
 			data[i] = "" + i;
