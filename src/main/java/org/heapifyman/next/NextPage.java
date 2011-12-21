@@ -87,6 +87,7 @@ public class NextPage extends WebPage {
 		 */
 		@Override
 		public Iterator<? extends String> iterator(int first, int count) {
+			logger.info("getting sublist from " + first + " to " + (first + count));
 			return Arrays.asList(data).subList(first, first + count).iterator();
 		}
 
@@ -95,6 +96,7 @@ public class NextPage extends WebPage {
 		 */
 		@Override
 		public int size() {
+			logger.info("size is: " + data.length);
 			return data.length;
 		}
 
@@ -103,6 +105,7 @@ public class NextPage extends WebPage {
 		 */
 		@Override
 		public IModel<String> model(String object) {
+			logger.info("Model is: " + object);
 			return new Model<String>(object);
 		}
 		
