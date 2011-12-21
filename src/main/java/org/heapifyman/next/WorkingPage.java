@@ -14,6 +14,7 @@ public class WorkingPage extends WebPage {
 	 * 
 	 */
 	private static final long serialVersionUID = 96565711013315035L;
+	
 	private static transient final Logger logger = Logger
 			.getLogger(WorkingPage.class);
 	

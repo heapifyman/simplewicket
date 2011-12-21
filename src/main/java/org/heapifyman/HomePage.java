@@ -6,6 +6,7 @@ package org.heapifyman;
 import org.apache.log4j.Logger;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.link.Link;
+import org.heapifyman.next.MightBeWorkingPage;
 import org.heapifyman.next.NotWorkingPage;
 import org.heapifyman.next.WorkingPage;
 
@@ -48,6 +49,19 @@ public class HomePage extends WebPage {
 			@Override
 			public void onClick() {
 				setResponsePage(NotWorkingPage.class);
+			}
+		});
+
+		add(new Link<NotWorkingPage>("link3") {
+
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 5490511054941699207L;
+
+			@Override
+			public void onClick() {
+				setResponsePage(MightBeWorkingPage.class);
 			}
 		});
 

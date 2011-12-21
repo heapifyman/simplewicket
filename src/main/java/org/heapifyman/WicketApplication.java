@@ -1,6 +1,7 @@
 package org.heapifyman;
 
 import org.apache.wicket.protocol.http.WebApplication;
+import org.heapifyman.next.MightBeWorkingPage;
 import org.heapifyman.next.NotWorkingPage;
 import org.heapifyman.next.WorkingPage;
 
@@ -31,5 +32,6 @@ public class WicketApplication extends WebApplication {
 		mountPage("/home", HomePage.class);
 		mountPage("/working", WorkingPage.class);
 		mountPage("/notworking", NotWorkingPage.class);
+		mountPage("/might", MightBeWorkingPage.class);
 	}
 }
