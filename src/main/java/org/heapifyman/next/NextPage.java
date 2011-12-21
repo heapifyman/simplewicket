@@ -29,9 +29,13 @@ public class NextPage extends WebPage {
 	private static transient final Logger logger = Logger
 			.getLogger(NextPage.class);
 	
-	private static final String[] data = new String[] { "one", "two", "three" };
+	private static final String[] data = new String[15];
 	
 	public NextPage() {
+		
+		for (int i = 0; i < 15; i++) {
+			data[i] = "" + i;
+		}
 		
 		add(new Link<HomePage>("home") {
 
