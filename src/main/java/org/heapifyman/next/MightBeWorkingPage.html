@@ -4,7 +4,21 @@
 		<meta charset="utf-8" />
 		<title>Apache Wicket Quickstart</title>
 		<link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:regular,bold' rel='stylesheet' type='text/css' />
-		<link rel="stylesheet" href="style.css" type="text/css" media="screen" title="Stylesheet" />
+		<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" title="Stylesheet" />
+		<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+		<script type="text/javascript" src="js/jquery-ui-1.8.17.custom.min.js"></script>
+		<script type="text/javascript" src="js/jquery.tagsinput.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/jquery.tagsinput.css" />
+		<script type="text/javascript">
+			$(function() {
+				$('#tags').tagsInput({
+					'height':'75px',
+					'width':'300px',
+					'interactive':true,
+					'defaultText':'add a tag',
+					});
+			});
+		</script>
 	</head>
 	<body>
 		<div>
@@ -15,6 +29,15 @@
 			<a wicket:id="ajaxLink">click me to update no of clicks via ajax</a>
 			<p>
 			<span>No of clicks: </span><span wicket:id="ajaxLabel"></span>
+		</div>
+		<p>
+		<div>
+			<form wicket:id="tagForm">
+				<label for="tags">Enter tags below, separated by comma</label><br>
+				<input name="tags" id="tags" wicket:id="tags" />
+				<p>
+				<input type="submit" value="Save" wicket:id="saveButton">
+			</form>
 		</div>
 	</body>
 </html>
