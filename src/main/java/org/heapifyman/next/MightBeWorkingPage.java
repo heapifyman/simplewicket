@@ -30,22 +30,6 @@ public class MightBeWorkingPage extends WebPage {
 	private static transient final Logger logger = Logger
 			.getLogger(MightBeWorkingPage.class);
 
-	// /**
-	// * Star image for no selected star
-	// */
-	// @SuppressWarnings("unused")
-	// private static final ResourceReference WICKETSTAR0 = new
-	// PackageResourceReference(
-	// WicketApplication.class, "images/WicketStar0.png");
-	//
-	// /**
-	// * Star image for selected star
-	// */
-	// @SuppressWarnings("unused")
-	// private static final ResourceReference WICKETSTAR1 = new
-	// PackageResourceReference(
-	// WicketApplication.class, "images/WicketStar1.png");
-
 	private int counter = 0;
 
 	private String tags = "eins,zwei,drei";
