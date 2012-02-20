@@ -103,6 +103,8 @@ public class MightBeWorkingPage extends WebPage {
 
 			@Override
 			protected void onRated(int rating, AjaxRequestTarget target) {
+				logger.info("New Rating: " + rating);
+				logger.debug("New Rating: " + rating);
 				testEntity.setRating(Integer.valueOf(rating));
 				target.add(ratingContainer);
 			}
