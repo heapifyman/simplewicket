@@ -5,10 +5,13 @@ package org.heapifyman.model;
 
 import java.io.Serializable;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 /**
  * @author reimer
  *
  */
+@XmlRootElement
 public class TestEntity implements Serializable {
 	
 	/**
