@@ -10,10 +10,14 @@ import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Form;
+import org.apache.wicket.markup.html.form.SubmitLink;
 import org.apache.wicket.markup.html.form.TextField;
+import org.apache.wicket.markup.html.form.validation.FormComponentFeedbackBorder;
 import org.apache.wicket.markup.html.link.Link;
+import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.PropertyModel;
+import org.apache.wicket.validation.validator.StringValidator;
 import org.heapifyman.HomePage;
 import org.heapifyman.model.TestEntity;
 
@@ -34,8 +38,9 @@ public class MightBeWorkingPage extends WebPage {
 
 	private String tags = "eins,zwei,drei";
 
-	private TestEntity testEntity = new TestEntity(Integer.valueOf(2));
+	private TestEntity testEntity = new TestEntity("", Integer.valueOf(2));
 
+	@SuppressWarnings("serial")
 	public MightBeWorkingPage() {
 
 		logger.debug("starting MightBeWorkingPage");
@@ -104,7 +109,6 @@ public class MightBeWorkingPage extends WebPage {
 			@Override
 			protected void onRated(int rating, AjaxRequestTarget target) {
 				logger.info("New Rating: " + rating);
-				logger.debug("New Rating: " + rating);
 				testEntity.setRating(Integer.valueOf(rating));
 				target.add(ratingContainer);
 			}
@@ -127,6 +131,23 @@ public class MightBeWorkingPage extends WebPage {
 				target.add(ratingContainer);
 			}
 
+		});
+
+		final Form<TestEntity> entityForm = new Form<TestEntity>("entityForm",
+				new CompoundPropertyModel<TestEntity>(testEntity));
+		add(entityForm);
+		final FeedbackPanel feedback = new FeedbackPanel("feedback");
+		entityForm.add(feedback);
+		FormComponentFeedbackBorder validationBorder = new FormComponentFeedbackBorder(
+				"validationBorder");
+		entityForm.add(validationBorder);
+		validationBorder.add(new TextField<String>("name").setRequired(true)
+				.add(StringValidator.minimumLength(3)));
+		entityForm.add(new SubmitLink("submit", entityForm) {
+			@Override
+			public void onSubmit() {
+				logger.info("TestEntity name: " + testEntity.getName());
+			}
 		});
 
 	}

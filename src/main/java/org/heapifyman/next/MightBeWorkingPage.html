@@ -44,5 +44,17 @@
 			<span>Rate this:</span>
 			<span wicket:id="rating"></span> <a wicket:id="clearRatingLink">Clear Rating</a>
 		</div>
+		<p>
+		<div>
+			<form wicket:id="entityForm">
+				<div wicket:id="feedback"></div>
+				<label for="name">Name:</label><br>
+				<div wicket:id="validationBorder">
+					<input id="name" name="name" type="text" wicket:id="name">
+				</div>
+				<br>
+				<input type="submit" value="Send" wicket:id="submit">
+			</form>
+		</div>
 	</body>
 </html>

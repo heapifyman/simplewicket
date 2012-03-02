@@ -23,8 +23,8 @@ import org.heapifyman.model.TestEntity;
 @Path("test")
 public class TestService {
 
-	private final TestEntity[] all = new TestEntity[] { new TestEntity(1),
-			new TestEntity(2) };
+	private final TestEntity[] all = new TestEntity[] { new TestEntity("1", 1),
+			new TestEntity("2", 2) };
 
 	@GET
 	@Path("/")
