@@ -25,18 +25,18 @@ import org.heapifyman.HomePage;
 public class NotWorkingPage extends WebPage {
 
 	private static final long serialVersionUID = 310242843705925911L;
-	
+
 	private static transient final Logger logger = Logger
 			.getLogger(NotWorkingPage.class);
-	
+
 	private static final String[] data = new String[15];
-	
+
 	public NotWorkingPage() {
-		
+
 		for (int i = 0; i < 15; i++) {
 			data[i] = "" + i;
 		}
-		
+
 		add(new Link<HomePage>("home") {
 
 			/**
@@ -48,14 +48,15 @@ public class NotWorkingPage extends WebPage {
 			public void onClick() {
 				setResponsePage(HomePage.class);
 			}
-			
+
 		});
-		
+
 		logger.info("rendering " + this.getClass().getName());
 		logger.info("*********************TEST**************************");
-		
-		List<IColumn<String>> columns = new ArrayList<IColumn<String>>();
-		columns.add(new AbstractColumn<String>(new Model<String>("column1")) {
+
+		List<IColumn<String, String>> columns = new ArrayList<IColumn<String, String>>();
+		columns.add(new AbstractColumn<String, String>(new Model<String>(
+				"column1")) {
 
 			/**
 			 * 
@@ -68,46 +69,62 @@ public class NotWorkingPage extends WebPage {
 				cellItem.add(new Label(componentId, rowModel.getObject()));
 			}
 		});
-		add(new AjaxFallbackDefaultDataTable<String>("table", columns,
+		add(new AjaxFallbackDefaultDataTable<String, String>("table", columns,
 				new MySortableDataProvider(), 10));
 	}
-	
+
 	/**
 	 * 
 	 */
-	private class MySortableDataProvider extends SortableDataProvider<String> {
+	private class MySortableDataProvider extends
+			SortableDataProvider<String, String> {
 
 		/**
 		 * 
 		 */
 		private static final long serialVersionUID = -8010620684177096713L;
 
-		/* (non-Javadoc)
-		 * @see org.apache.wicket.markup.repeater.data.IDataProvider#iterator(int, int)
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see
+		 * org.apache.wicket.markup.repeater.data.IDataProvider#iterator(int,
+		 * int)
 		 */
 		@Override
-		public Iterator<? extends String> iterator(int first, int count) {
-			logger.info("getting sublist from " + first + " to " + (first + count));
-			return Arrays.asList(data).subList(first, first + count).iterator();
+		public Iterator<? extends String> iterator(long first, long count) {
+			logger.info("getting sublist from " + first + " to "
+					+ (first + count));
+
+			return Arrays
+					.asList(data)
+					.subList(Long.valueOf(first).intValue(),
+							Long.valueOf(first + count).intValue()).iterator();
 		}
 
-		/* (non-Javadoc)
+		/*
+		 * (non-Javadoc)
+		 * 
 		 * @see org.apache.wicket.markup.repeater.data.IDataProvider#size()
 		 */
 		@Override
-		public int size() {
+		public long size() {
 			logger.info("size is: " + data.length);
 			return data.length;
 		}
 
-		/* (non-Javadoc)
-		 * @see org.apache.wicket.markup.repeater.data.IDataProvider#model(java.lang.Object)
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see
+		 * org.apache.wicket.markup.repeater.data.IDataProvider#model(java.lang
+		 * .Object)
 		 */
 		@Override
 		public IModel<String> model(String object) {
 			logger.info("Model is: " + object);
 			return new Model<String>(object);
 		}
-		
+
 	}
 }
